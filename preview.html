@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>StavProfi — Rekonstrukce a stavební práce v ČR</title>
+<meta name="description" content="Rekonstrukce bytů a domů, zednické a hrubé stavební práce. Kvalitně, včas, se zárukou. Praha a okolí." />
+<style>
+  :root{
+    --bg:#0f1115;
+    --bg-soft:#161a21;
+    --card:#1b212b;
+    --line:#28303c;
+    --text:#eef2f7;
+    --muted:#9aa7b8;
+    --brand:#f5a623;      /* budivelnyj oranzhevyj */
+    --brand-2:#ffc861;
+    --accent:#2e9bff;
+    --ok:#37c871;
+    --radius:16px;
+    --maxw:1140px;
+    --font:'Segoe UI',system-ui,-apple-system,Roboto,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:999px;font-weight:700;font-size:16px;cursor:pointer;border:none;transition:.2s transform,.2s box-shadow;white-space:nowrap}
+  .btn:active{transform:translateY(1px)}
+  .btn-primary{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#1a1206;box-shadow:0 8px 24px rgba(245,166,35,.28)}
+  .btn-primary:hover{box-shadow:0 12px 30px rgba(245,166,35,.4)}
+  .btn-ghost{background:transparent;border:1.5px solid var(--line);color:var(--text)}
+  .btn-ghost:hover{border-color:var(--brand)}
+  .section{padding:78px 0}
+  .eyebrow{color:var(--brand);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:13px;margin-bottom:12px}
+  h1,h2,h3{line-height:1.15;letter-spacing:-.02em}
+  h2{font-size:clamp(28px,4vw,40px);margin-bottom:14px}
+  .lead{color:var(--muted);font-size:18px;max-width:640px}
+
+  /* HEADER */
+  header{position:sticky;top:0;z-index:50;background:rgba(15,17,21,.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:20px;letter-spacing:-.02em}
+  .logo .mark{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--brand),var(--brand-2));display:grid;place-items:center;color:#1a1206;font-size:19px}
+  .nav-links{display:flex;gap:28px;align-items:center}
+  .nav-links a{color:var(--muted);font-weight:600;font-size:15px}
+  .nav-links a:hover{color:var(--text)}
+  .nav-right{display:flex;gap:12px;align-items:center}
+  .lang{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+  .lang button{background:transparent;color:var(--muted);border:none;padding:7px 13px;font-weight:800;font-size:13px;cursor:pointer}
+  .lang button.active{background:var(--brand);color:#1a1206}
+  .burger{display:none;background:none;border:none;color:var(--text);font-size:26px;cursor:pointer}
+
+  /* HERO */
+  .hero{position:relative;overflow:hidden}
+  .hero:before{content:"";position:absolute;inset:0;background:
+    radial-gradient(700px 400px at 80% -10%,rgba(245,166,35,.16),transparent 60%),
+    radial-gradient(600px 500px at -10% 30%,rgba(46,155,255,.10),transparent 60%)}
+  .hero-inner{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding:70px 0 84px}
+  .hero h1{font-size:clamp(34px,5.2vw,56px);font-weight:900;margin-bottom:20px}
+  .hero h1 .hl{color:var(--brand)}
+  .hero p{color:var(--muted);font-size:19px;max-width:560px;margin-bottom:30px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .trust{display:flex;gap:26px;margin-top:34px;flex-wrap:wrap}
+  .trust .t{display:flex;flex-direction:column}
+  .trust .n{font-size:26px;font-weight:900;color:var(--text)}
+  .trust .l{font-size:13px;color:var(--muted)}
+  .hero-visual{aspect-ratio:4/5;border-radius:22px;background:
+    linear-gradient(180deg,rgba(0,0,0,.15),rgba(0,0,0,.6)),
+    repeating-linear-gradient(45deg,#2a323f 0 22px,#232a35 22px 44px),
+    linear-gradient(135deg,#3a4453,#20262f);
+    border:1px solid var(--line);box-shadow:0 30px 60px rgba(0,0,0,.45);position:relative;display:grid;place-items:center}
+  .hero-visual:after{content:"📷 фото об'єкта";color:rgba(255,255,255,.5);font-size:15px;font-weight:700}
+  .shot{display:grid;place-items:center}
+  .shot:after{content:"📷";font-size:34px;opacity:.35}
+  .hero-badge{position:absolute;left:18px;bottom:18px;background:rgba(20,24,30,.85);backdrop-filter:blur(6px);border:1px solid var(--line);border-radius:14px;padding:14px 18px;display:flex;align-items:center;gap:12px}
+  .hero-badge .dot{width:40px;height:40px;border-radius:10px;background:var(--ok);display:grid;place-items:center;font-size:20px}
+  .hero-badge b{display:block;font-size:15px}
+  .hero-badge span{color:var(--muted);font-size:13px}
+
+  /* SERVICES */
+  .grid{display:grid;gap:20px}
+  .cards-3{grid-template-columns:repeat(3,1fr)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px;transition:.2s}
+  .card:hover{border-color:var(--brand);transform:translateY(-3px)}
+  .card .ico{width:52px;height:52px;border-radius:12px;background:rgba(245,166,35,.12);display:grid;place-items:center;font-size:26px;margin-bottom:16px}
+  .card h3{font-size:20px;margin-bottom:8px}
+  .card p{color:var(--muted);font-size:15px}
+  .card ul{list-style:none;margin-top:12px;display:flex;flex-direction:column;gap:6px}
+  .card li{color:var(--muted);font-size:14px;padding-left:22px;position:relative}
+  .card li:before{content:"✓";position:absolute;left:0;color:var(--ok);font-weight:900}
+
+  /* WHY */
+  .why{background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .cards-4{grid-template-columns:repeat(4,1fr)}
+  .why .card{background:transparent;border:none;padding:0}
+  .why .card:hover{transform:none}
+  .why .ico{background:rgba(46,155,255,.12)}
+
+  /* PROCESS */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:s}
+  .step{position:relative;padding:26px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius)}
+  .step:before{counter-increment:s;content:"0" counter(s);font-size:38px;font-weight:900;color:var(--brand);opacity:.35;display:block;margin-bottom:8px}
+  .step h3{font-size:17px;margin-bottom:6px}
+  .step p{color:var(--muted);font-size:14px}
+
+  /* GALLERY */
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .shot{aspect-ratio:1/1;border-radius:14px;background-size:cover;background-position:center;border:1px solid var(--line);position:relative;overflow:hidden}
+  .shot span{position:absolute;left:12px;bottom:12px;background:rgba(15,17,21,.8);padding:5px 12px;border-radius:999px;font-size:12px;font-weight:700}
+
+  /* CTA band */
+  .band{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#1a1206;border-radius:22px;padding:46px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  .band h2{color:#1a1206;margin-bottom:6px}
+  .band p{color:#4a3708;font-weight:600}
+  .band .btn-primary{background:#161a21;color:#fff;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+
+  /* CONTACT */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+  form{display:grid;gap:14px}
+  .field label{display:block;font-size:14px;color:var(--muted);margin-bottom:6px;font-weight:600}
+  .field input,.field textarea{width:100%;background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;padding:13px 15px;color:var(--text);font-size:15px;font-family:inherit}
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--brand)}
+  .contact-info .row{display:flex;gap:14px;align-items:flex-start;padding:16px 0;border-bottom:1px solid var(--line)}
+  .contact-info .row .ico{width:44px;height:44px;border-radius:11px;background:rgba(245,166,35,.12);display:grid;place-items:center;font-size:20px;flex-shrink:0}
+  .contact-info .row b{display:block;font-size:15px}
+  .contact-info .row span{color:var(--muted);font-size:14px}
+
+  /* FOOTER */
+  footer{border-top:1px solid var(--line);padding:34px 0;color:var(--muted);font-size:14px}
+  .foot{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+
+  /* floating whatsapp */
+  .float-wa{position:fixed;right:20px;bottom:20px;z-index:60;width:58px;height:58px;border-radius:50%;background:#25d366;display:grid;place-items:center;font-size:30px;box-shadow:0 10px 26px rgba(37,211,102,.45);transition:.2s}
+  .float-wa:hover{transform:scale(1.06)}
+
+  @media(max-width:900px){
+    .hero-inner{grid-template-columns:1fr}
+    .hero-visual{max-width:420px;order:-1}
+    .cards-3,.cards-4,.steps,.gallery{grid-template-columns:1fr 1fr}
+    .contact-grid{grid-template-columns:1fr}
+    .nav-links{display:none}
+    .burger{display:block}
+  }
+  @media(max-width:560px){
+    .section{padding:56px 0}
+    .cards-3,.cards-4,.steps,.gallery{grid-template-columns:1fr}
+    .band{padding:30px}
+    .trust{gap:18px}
+  }
+  /* mobile menu open */
+  .nav-links.open{display:flex;position:absolute;top:68px;left:0;right:0;flex-direction:column;background:var(--bg-soft);padding:18px 20px;border-bottom:1px solid var(--line);gap:16px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="logo"><span class="mark">▲</span> StavProfi</a>
+    <nav class="nav-links" id="navlinks">
+      <a href="#services" data-i="nav_services">Služby</a>
+      <a href="#why" data-i="nav_why">Proč my</a>
+      <a href="#process" data-i="nav_process">Postup</a>
+      <a href="#gallery" data-i="nav_gallery">Realizace</a>
+      <a href="#contact" data-i="nav_contact">Kontakt</a>
+    </nav>
+    <div class="nav-right">
+      <div class="lang">
+        <button data-lang="cs" class="active">CZ</button>
+        <button data-lang="uk">UA</button>
+      </div>
+      <a href="#contact" class="btn btn-primary" style="padding:10px 18px;font-size:14px" data-i="nav_cta">Poptávka</a>
+      <button class="burger" id="burger">☰</button>
+    </div>
+  </div>
+</header>
+
+<span id="top"></span>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div>
+      <div class="eyebrow" data-i="hero_eyebrow">Rekonstrukce · Zednické práce · Praha a okolí</div>
+      <h1 data-i="hero_h1">Rekonstrukce bytů a domů <span class="hl">pod klíč</span></h1>
+      <p data-i="hero_p">Hrubé i dokončovací stavební práce s garancí kvality a dodržením termínů. Od demolice po úklid — vše na jednom místě.</p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-primary" data-i="hero_cta1">Nezávazná poptávka</a>
+        <a href="tel:+420000000000" class="btn btn-ghost" data-i="hero_cta2">☎ Zavolat</a>
+      </div>
+      <div class="trust">
+        <div class="t"><span class="n">10+</span><span class="l" data-i="trust1">let zkušeností</span></div>
+        <div class="t"><span class="n">200+</span><span class="l" data-i="trust2">dokončených zakázek</span></div>
+        <div class="t"><span class="n">24 m</span><span class="l" data-i="trust3">záruka na práci</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-badge">
+        <div class="dot">✓</div>
+        <div><b data-i="hero_badge_b">Smlouva a záruka</b><span data-i="hero_badge_s">Vždy písemně, bez skrytých poplatků</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="wrap">
+    <div class="eyebrow" data-i="serv_eyebrow">Co děláme</div>
+    <h2 data-i="serv_h2">Kompletní stavební služby</h2>
+    <p class="lead" data-i="serv_lead">Od hrubé stavby po finální detaily. Řekněte nám záměr — postaráme se o zbytek.</p>
+    <div class="grid cards-3" style="margin-top:36px">
+      <div class="card">
+        <div class="ico">🏠</div>
+        <h3 data-i="s1_h">Rekonstrukce bytů a domů</h3>
+        <p data-i="s1_p">Kompletní přestavby „pod klíč" i dílčí úpravy interiéru.</p>
+        <ul>
+          <li data-i="s1_l1">Rekonstrukce koupelen a kuchyní</li>
+          <li data-i="s1_l2">Bytová jádra, příčky, dispozice</li>
+          <li data-i="s1_l3">Podlahy, obklady, malby</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="ico">🧱</div>
+        <h3 data-i="s2_h">Zednické a hrubé práce</h3>
+        <p data-i="s2_p">Kvalitní řemeslo jako základ každé stavby.</p>
+        <ul>
+          <li data-i="s2_l1">Zdivo, příčky, překlady</li>
+          <li data-i="s2_l2">Omítky, štuky, potěry</li>
+          <li data-i="s2_l3">Betonáž, fasády, zateplení</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="ico">🔧</div>
+        <h3 data-i="s3_h">Dokončovací práce</h3>
+        <p data-i="s3_p">Detaily, na kterých záleží nejvíc.</p>
+        <ul>
+          <li data-i="s3_l1">Sádrokarton, podhledy</li>
+          <li data-i="s3_l2">Elektro a voda (s partnery)</li>
+          <li data-i="s3_l3">Finální úklid a předání</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="section why" id="why">
+  <div class="wrap">
+    <div class="eyebrow" data-i="why_eyebrow">Proč zákazníci volí nás</div>
+    <h2 data-i="why_h2">Práce bez stresu a překvapení</h2>
+    <div class="grid cards-4" style="margin-top:36px">
+      <div class="card"><div class="ico">📋</div><h3 data-i="w1_h">Jasná cena předem</h3><p data-i="w1_p">Detailní rozpočet a smlouva před začátkem prací.</p></div>
+      <div class="card"><div class="ico">⏱️</div><h3 data-i="w2_h">Dodržíme termín</h3><p data-i="w2_p">Termíny plníme — váš čas i peníze jsou pro nás priorita.</p></div>
+      <div class="card"><div class="ico">🛡️</div><h3 data-i="w3_h">Záruka na práci</h3><p data-i="w3_p">Za odvedenou práci ručíme až 24 měsíců.</p></div>
+      <div class="card"><div class="ico">🇺🇦🇨🇿</div><h3 data-i="w4_h">Mluvíme vaší řečí</h3><p data-i="w4_p">Domluvíme se česky i ukrajinsky — bez nedorozumění.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section" id="process">
+  <div class="wrap">
+    <div class="eyebrow" data-i="proc_eyebrow">Jak to probíhá</div>
+    <h2 data-i="proc_h2">Od poptávky k hotové zakázce</h2>
+    <div class="steps" style="margin-top:36px">
+      <div class="step"><h3 data-i="p1_h">Konzultace</h3><p data-i="p1_p">Zavoláte nebo napíšete — probereme záměr a rozsah.</p></div>
+      <div class="step"><h3 data-i="p2_h">Prohlídka a rozpočet</h3><p data-i="p2_p">Přijedeme, zaměříme a připravíme jasnou cenovou nabídku.</p></div>
+      <div class="step"><h3 data-i="p3_h">Realizace</h3><p data-i="p3_p">Pustíme se do práce podle harmonogramu a smlouvy.</p></div>
+      <div class="step"><h3 data-i="p4_h">Předání a úklid</h3><p data-i="p4_p">Uklidíme, předáme hotové dílo a poskytneme záruku.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section why" id="gallery">
+  <div class="wrap">
+    <div class="eyebrow" data-i="gal_eyebrow">Naše realizace</div>
+    <h2 data-i="gal_h2">Výsledky mluví za nás</h2>
+    <p class="lead" data-i="gal_lead">Ukázka dokončených projektů. Fotky vlastních realizací zde brzy doplníme.</p>
+    <div class="gallery" style="margin-top:36px">
+      <div class="shot" style="background:linear-gradient(135deg,#3b4657,#242b35)"><span data-i="g1">Rekonstrukce bytu</span></div>
+      <div class="shot" style="background:linear-gradient(135deg,#2f4a52,#20313a)"><span data-i="g2">Koupelna</span></div>
+      <div class="shot" style="background:linear-gradient(135deg,#4a4033,#2b2620)"><span data-i="g3">Kuchyň</span></div>
+      <div class="shot" style="background:linear-gradient(135deg,#40485a,#262b36)"><span data-i="g4">Zednické práce</span></div>
+      <div class="shot" style="background:linear-gradient(135deg,#4d4636,#2c2a22)"><span data-i="g5">Omítky</span></div>
+      <div class="shot" style="background:linear-gradient(135deg,#35485a,#212a34)"><span data-i="g6">Fasáda</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="section">
+  <div class="wrap">
+    <div class="band">
+      <div>
+        <h2 data-i="band_h">Máte plán? Domluvme se.</h2>
+        <p data-i="band_p">Nezávazná konzultace a cenová nabídka zdarma.</p>
+      </div>
+      <a href="#contact" class="btn btn-primary" data-i="band_cta">Získat nabídku</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section why" id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div>
+        <div class="eyebrow" data-i="con_eyebrow">Kontakt</div>
+        <h2 data-i="con_h2">Napište nám poptávku</h2>
+        <p class="lead" style="margin-bottom:26px" data-i="con_lead">Vyplňte formulář nebo zavolejte. Ozveme se do 24 hodin.</p>
+        <form onsubmit="return sendForm(event)">
+          <div class="field"><label data-i="f_name">Jméno</label><input required name="name" /></div>
+          <div class="field"><label data-i="f_phone">Telefon</label><input required name="phone" type="tel" /></div>
+          <div class="field"><label data-i="f_msg">Popis zakázky</label><textarea rows="4" name="msg"></textarea></div>
+          <button class="btn btn-primary" type="submit" data-i="f_send">Odeslat poptávku</button>
+        </form>
+      </div>
+      <div class="contact-info">
+        <div class="row"><div class="ico">📞</div><div><b data-i="ci1_b">Telefon / WhatsApp</b><a href="tel:+420000000000"><span>+420 000 000 000</span></a></div></div>
+        <div class="row"><div class="ico">✉️</div><div><b data-i="ci2_b">E-mail</b><span>info@stavprofi.cz</span></div></div>
+        <div class="row"><div class="ico">📍</div><div><b data-i="ci3_b">Působnost</b><span data-i="ci3_s">Praha a Středočeský kraj</span></div></div>
+        <div class="row"><div class="ico">📷</div><div><b data-i="ci4_b">Instagram</b><span>@stavprofi</span></div></div>
+        <div class="row" style="border:none"><div class="ico">🕐</div><div><b data-i="ci5_b">Provozní doba</b><span data-i="ci5_s">Po–So 7:00–19:00</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div>© <span id="year"></span> StavProfi · IČO 00000000</div>
+    <div data-i="foot_r">Rekonstrukce a stavební práce · Praha</div>
+  </div>
+</footer>
+
+<a href="https://wa.me/420000000000" class="float-wa" target="_blank" aria-label="WhatsApp">💬</a>
+
+<script>
+/* ---------- i18n ---------- */
+const I = {
+  cs:{
+    nav_services:"Služby",nav_why:"Proč my",nav_process:"Postup",nav_gallery:"Realizace",nav_contact:"Kontakt",nav_cta:"Poptávka",
+    hero_eyebrow:"Rekonstrukce · Zednické práce · Praha a okolí",
+    hero_h1:'Rekonstrukce bytů a domů <span class="hl">pod klíč</span>',
+    hero_p:"Hrubé i dokončovací stavební práce s garancí kvality a dodržením termínů. Od demolice po úklid — vše na jednom místě.",
+    hero_cta1:"Nezávazná poptávka",hero_cta2:"☎ Zavolat",
+    trust1:"let zkušeností",trust2:"dokončených zakázek",trust3:"záruka na práci",
+    hero_badge_b:"Smlouva a záruka",hero_badge_s:"Vždy písemně, bez skrytých poplatků",
+    serv_eyebrow:"Co děláme",serv_h2:"Kompletní stavební služby",serv_lead:"Od hrubé stavby po finální detaily. Řekněte nám záměr — postaráme se o zbytek.",
+    s1_h:"Rekonstrukce bytů a domů",s1_p:'Kompletní přestavby „pod klíč" i dílčí úpravy interiéru.',s1_l1:"Rekonstrukce koupelen a kuchyní",s1_l2:"Bytová jádra, příčky, dispozice",s1_l3:"Podlahy, obklady, malby",
+    s2_h:"Zednické a hrubé práce",s2_p:"Kvalitní řemeslo jako základ každé stavby.",s2_l1:"Zdivo, příčky, překlady",s2_l2:"Omítky, štuky, potěry",s2_l3:"Betonáž, fasády, zateplení",
+    s3_h:"Dokončovací práce",s3_p:"Detaily, na kterých záleží nejvíc.",s3_l1:"Sádrokarton, podhledy",s3_l2:"Elektro a voda (s partnery)",s3_l3:"Finální úklid a předání",
+    why_eyebrow:"Proč zákazníci volí nás",why_h2:"Práce bez stresu a překvapení",
+    w1_h:"Jasná cena předem",w1_p:"Detailní rozpočet a smlouva před začátkem prací.",
+    w2_h:"Dodržíme termín",w2_p:"Termíny plníme — váš čas i peníze jsou pro nás priorita.",
+    w3_h:"Záruka na práci",w3_p:"Za odvedenou práci ručíme až 24 měsíců.",
+    w4_h:"Mluvíme vaší řečí",w4_p:"Domluvíme se česky i ukrajinsky — bez nedorozumění.",
+    proc_eyebrow:"Jak to probíhá",proc_h2:"Od poptávky k hotové zakázce",
+    p1_h:"Konzultace",p1_p:"Zavoláte nebo napíšete — probereme záměr a rozsah.",
+    p2_h:"Prohlídka a rozpočet",p2_p:"Přijedeme, zaměříme a připravíme jasnou cenovou nabídku.",
+    p3_h:"Realizace",p3_p:"Pustíme se do práce podle harmonogramu a smlouvy.",
+    p4_h:"Předání a úklid",p4_p:"Uklidíme, předáme hotové dílo a poskytneme záruku.",
+    gal_eyebrow:"Naše realizace",gal_h2:"Výsledky mluví za nás",gal_lead:"Ukázka dokončených projektů. Fotky vlastních realizací zde brzy doplníme.",
+    g1:"Rekonstrukce bytu",g2:"Koupelna",g3:"Kuchyň",g4:"Zednické práce",g5:"Omítky",g6:"Fasáda",
+    band_h:"Máte plán? Domluvme se.",band_p:"Nezávazná konzultace a cenová nabídka zdarma.",band_cta:"Získat nabídku",
+    con_eyebrow:"Kontakt",con_h2:"Napište nám poptávku",con_lead:"Vyplňte formulář nebo zavolejte. Ozveme se do 24 hodin.",
+    f_name:"Jméno",f_phone:"Telefon",f_msg:"Popis zakázky",f_send:"Odeslat poptávku",
+    ci1_b:"Telefon / WhatsApp",ci2_b:"E-mail",ci3_b:"Působnost",ci3_s:"Praha a Středočeský kraj",ci4_b:"Instagram",ci5_b:"Provozní doba",ci5_s:"Po–So 7:00–19:00",
+    foot_r:"Rekonstrukce a stavební práce · Praha"
+  },
+  uk:{
+    nav_services:"Послуги",nav_why:"Чому ми",nav_process:"Як працюємо",nav_gallery:"Роботи",nav_contact:"Контакти",nav_cta:"Заявка",
+    hero_eyebrow:"Ремонти · Мулярні роботи · Прага та область",
+    hero_h1:'Ремонт квартир і будинків <span class="hl">під ключ</span>',
+    hero_p:"Чорнові та оздоблювальні роботи з гарантією якості та дотриманням термінів. Від демонтажу до прибирання — все в одному місці.",
+    hero_cta1:"Безкоштовна заявка",hero_cta2:"☎ Зателефонувати",
+    trust1:"років досвіду",trust2:"завершених об'єктів",trust3:"гарантія на роботи",
+    hero_badge_b:"Договір і гарантія",hero_badge_s:"Завжди письмово, без прихованих платежів",
+    serv_eyebrow:"Що ми робимо",serv_h2:"Повний спектр будівельних робіт",serv_lead:"Від чорнової до фінальних деталей. Скажіть, що потрібно — решту зробимо ми.",
+    s1_h:"Ремонт квартир і будинків",s1_p:"Комплексні ремонти «під ключ» та часткові роботи в інтер'єрі.",s1_l1:"Ремонт ванних кімнат і кухонь",s1_l2:"Перепланування, перегородки",s1_l3:"Підлоги, плитка, малярні роботи",
+    s2_h:"Мулярні та чорнові роботи",s2_p:"Якісне ремесло як основа кожної будівлі.",s2_l1:"Кладка, перегородки, перемички",s2_l2:"Штукатурка, стяжки",s2_l3:"Бетонування, фасади, утеплення",
+    s3_h:"Оздоблювальні роботи",s3_p:"Деталі, які мають найбільше значення.",s3_l1:"Гіпсокартон, підвісні стелі",s3_l2:"Електрика та вода (з партнерами)",s3_l3:"Фінальне прибирання та здача",
+    why_eyebrow:"Чому обирають нас",why_h2:"Роботи без стресу та сюрпризів",
+    w1_h:"Чітка ціна наперед",w1_p:"Детальний кошторис і договір до початку робіт.",
+    w2_h:"Дотримуємось термінів",w2_p:"Виконуємо вчасно — ваш час і гроші для нас пріоритет.",
+    w3_h:"Гарантія на роботи",w3_p:"За виконану роботу відповідаємо до 24 місяців.",
+    w4_h:"Говоримо вашою мовою",w4_p:"Порозуміємось українською та чеською — без непорозумінь.",
+    proc_eyebrow:"Як це відбувається",proc_h2:"Від заявки до готового об'єкта",
+    p1_h:"Консультація",p1_p:"Телефонуєте або пишете — обговорюємо задачу й обсяг.",
+    p2_h:"Огляд і кошторис",p2_p:"Приїжджаємо, робимо заміри та готуємо чітку пропозицію.",
+    p3_h:"Виконання",p3_p:"Беремось до роботи за графіком і договором.",
+    p4_h:"Здача та прибирання",p4_p:"Прибираємо, здаємо готовий об'єкт і даємо гарантію.",
+    gal_eyebrow:"Наші роботи",gal_h2:"Результат говорить сам за себе",gal_lead:"Приклади завершених проєктів. Фото власних робіт додамо найближчим часом.",
+    g1:"Ремонт квартири",g2:"Ванна кімната",g3:"Кухня",g4:"Мулярні роботи",g5:"Штукатурка",g6:"Фасад",
+    band_h:"Є план? Давайте обговоримо.",band_p:"Безкоштовна консультація та кошторис.",band_cta:"Отримати пропозицію",
+    con_eyebrow:"Контакти",con_h2:"Залиште заявку",con_lead:"Заповніть форму або зателефонуйте. Відповімо протягом 24 годин.",
+    f_name:"Ім'я",f_phone:"Телефон",f_msg:"Опис роботи",f_send:"Надіслати заявку",
+    ci1_b:"Телефон / WhatsApp",ci2_b:"E-mail",ci3_b:"Регіон роботи",ci3_s:"Прага та Середньочеський край",ci4_b:"Instagram",ci5_b:"Графік роботи",ci5_s:"Пн–Сб 7:00–19:00",
+    foot_r:"Ремонти та будівельні роботи · Прага"
+  }
+};
+
+function setLang(l){
+  document.documentElement.lang = l==='uk'?'uk':'cs';
+  document.querySelectorAll('[data-i]').forEach(el=>{
+    const k=el.getAttribute('data-i');
+    if(I[l][k]!==undefined) el.innerHTML=I[l][k];
+  });
+  document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));
+  try{localStorage.setItem('lang',l)}catch(e){}
+}
+document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+
+/* burger */
+document.getElementById('burger').addEventListener('click',()=>{
+  document.getElementById('navlinks').classList.toggle('open');
+});
+document.querySelectorAll('#navlinks a').forEach(a=>a.addEventListener('click',()=>{
+  document.getElementById('navlinks').classList.remove('open');
+}));
+
+/* form -> whatsapp (bez backendu) */
+function sendForm(e){
+  e.preventDefault();
+  const f=e.target;
+  const l=document.documentElement.lang==='uk'?'uk':'cs';
+  const txt = (l==='uk'?'Нова заявка з сайту:':'Nová poptávka z webu:')
+    +`\n${l==='uk'?"Ім'я":"Jméno"}: ${f.name.value}`
+    +`\n${l==='uk'?'Телефон':'Telefon'}: ${f.phone.value}`
+    +`\n${l==='uk'?'Опис':'Popis'}: ${f.msg.value}`;
+  window.open('https://wa.me/420000000000?text='+encodeURIComponent(txt),'_blank');
+  return false;
+}
+
+document.getElementById('year').textContent=new Date().getFullYear();
+try{const s=localStorage.getItem('lang'); if(s)setLang(s);}catch(e){}
+</script>
+</body>
+</html>
