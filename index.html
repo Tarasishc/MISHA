@@ -174,6 +174,8 @@
 
   /* HAZARD STRIPE (safety tape) */
   .hazard{height:9px;background:repeating-linear-gradient(45deg,#f5b820 0 14px,#1a1206 14px 28px)}
+  /* фоновий візерунок будівельних іконок */
+  .bg-deco{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;opacity:.3}
   /* напівпрозорі секції, щоб проглядала сітка-креслення */
   .why{background:rgba(22,26,33,.72)}
   .card,.step{background:rgba(27,33,43,.82);backdrop-filter:blur(2px)}
@@ -182,6 +184,43 @@
 <body>
 
 <div class="hazard" aria-hidden="true"></div>
+
+<svg class="bg-deco" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="constr" width="300" height="300" patternUnits="userSpaceOnUse">
+      <g fill="none" stroke="#8aa9d0" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+        <!-- каска -->
+        <path d="M18 74 h64"/>
+        <path d="M26 74 a24 22 0 0 1 48 0"/>
+        <path d="M50 52 v-8"/>
+        <path d="M38 60 h24"/>
+        <!-- цегляна кладка -->
+        <rect x="200" y="30" width="28" height="13"/>
+        <rect x="231" y="30" width="28" height="13"/>
+        <rect x="185" y="46" width="28" height="13"/>
+        <rect x="216" y="46" width="28" height="13"/>
+        <rect x="247" y="46" width="20" height="13"/>
+        <rect x="200" y="62" width="28" height="13"/>
+        <rect x="231" y="62" width="28" height="13"/>
+        <!-- гайка (центр) -->
+        <path d="M150 136 l11 6 v13 l-11 6 l-11 -6 v-13 z"/>
+        <circle cx="150" cy="155" r="5"/>
+        <!-- рулетка -->
+        <g transform="translate(22,212) rotate(-16)">
+          <rect x="0" y="0" width="96" height="22"/>
+          <path d="M14 0 v8 M28 0 v13 M42 0 v8 M56 0 v13 M70 0 v8 M84 0 v13"/>
+        </g>
+        <!-- малярний валик -->
+        <g transform="translate(210,205)">
+          <rect x="0" y="0" width="50" height="20" rx="4"/>
+          <path d="M50 10 h14 v18"/>
+          <path d="M64 28 v22"/>
+        </g>
+      </g>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#constr)"/>
+</svg>
 
 <header>
   <div class="wrap nav">
