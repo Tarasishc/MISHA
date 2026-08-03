@@ -156,6 +156,13 @@
   }
   /* mobile menu open */
   .nav-links.open{display:flex;position:absolute;top:68px;left:0;right:0;flex-direction:column;background:var(--bg-soft);padding:18px 20px;border-bottom:1px solid var(--line);gap:16px}
+
+  /* CONSTRUCTION RULER (tape measure) */
+  .ruler{height:46px;background:linear-gradient(#ffd64a,#f5b820);border-top:3px solid #1a1206;border-bottom:3px solid #1a1206;position:relative;overflow:hidden}
+  .ruler:before,.ruler:after{content:"";position:absolute;left:0;right:0;top:0}
+  .ruler:before{height:14px;background-image:repeating-linear-gradient(90deg,#1a1206 0 2px,transparent 2px 25px)}
+  .ruler:after{height:24px;background-image:repeating-linear-gradient(90deg,#1a1206 0 2.5px,transparent 2.5px 125px)}
+  .trust .n{font-variant-numeric:tabular-nums}
 </style>
 </head>
 <body>
@@ -195,9 +202,9 @@
         <a href="tel:+420773475913" class="btn btn-ghost" data-i="hero_cta2">☎ Zavolat</a>
       </div>
       <div class="trust">
-        <div class="t"><span class="n">15</span><span class="l" data-i="trust1">let zkušeností</span></div>
-        <div class="t"><span class="n">200+</span><span class="l" data-i="trust2">dokončených zakázek</span></div>
-        <div class="t"><span class="n">24 m</span><span class="l" data-i="trust3">záruka na práci</span></div>
+        <div class="t"><span class="n" data-count="15">15</span><span class="l" data-i="trust1">let zkušeností</span></div>
+        <div class="t"><span class="n" data-count="200" data-suffix="+">200+</span><span class="l" data-i="trust2">dokončených zakázek</span></div>
+        <div class="t"><span class="n" data-count="24" data-suffix=" m">24 m</span><span class="l" data-i="trust3">záruka na práci</span></div>
       </div>
     </div>
     <div class="hero-visual">
@@ -208,6 +215,8 @@
     </div>
   </div>
 </section>
+
+<div class="ruler" aria-hidden="true"></div>
 
 <!-- SERVICES -->
 <section class="section" id="services">
@@ -436,6 +445,29 @@ function sendForm(e){
 
 document.getElementById('year').textContent=new Date().getFullYear();
 try{const s=localStorage.getItem('lang'); if(s)setLang(s);}catch(e){}
+
+/* count-up статистики при скролі */
+(function(){
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const nums=document.querySelectorAll('.trust .n[data-count]');
+  if(reduce||!('IntersectionObserver' in window))return;
+  const io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting)return;
+      const el=e.target, target=+el.dataset.count, suf=el.dataset.suffix||'';
+      let start=null;const dur=1100;
+      function step(t){
+        if(!start)start=t;
+        const p=Math.min((t-start)/dur,1);
+        el.textContent=Math.round(p*target)+suf;
+        if(p<1)requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+      io.unobserve(el);
+    });
+  },{threshold:.6});
+  nums.forEach(function(n){io.observe(n)});
+})();
 </script>
 </body>
 </html>
