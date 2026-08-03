@@ -11,7 +11,7 @@
 - Адаптив під мобільні
 
 ## ✅ Вже підставлено
-- Назва: **L&K Reality**
+- Назва: **L&M Reality**
 - WhatsApp / телефон: **+420 773 475 913**
 - E-mail: **lapchakmykhailo@gmail.com**
 
