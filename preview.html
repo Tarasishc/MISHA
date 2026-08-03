@@ -53,6 +53,10 @@
   .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
   .logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:20px;letter-spacing:-.02em}
   .logo .mark{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--brand),var(--brand-2));display:grid;place-items:center;color:#1a1206;font-size:19px}
+  .logo-mark{width:42px;height:42px;flex-shrink:0}
+  .logo-word{font-weight:900;font-size:19px;letter-spacing:.01em;line-height:1}
+  .logo-word .g{color:var(--brand)}
+  .logo-word .s{color:#cfd8e2}
   .nav-links{display:flex;gap:28px;align-items:center}
   .nav-links a{color:var(--muted);font-weight:600;font-size:15px}
   .nav-links a:hover{color:var(--text)}
@@ -191,7 +195,24 @@
 
 <header>
   <div class="wrap nav">
-    <a href="#top" class="logo"><span class="mark">▲</span> L&amp;M StavPro</a>
+    <a href="#top" class="logo" aria-label="L&amp;M StavPro">
+      <svg class="logo-mark" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="lgGold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe4a6"/><stop offset="1" stop-color="#c8901f"/></linearGradient>
+          <linearGradient id="lgSilver" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eef2f7"/><stop offset=".55" stop-color="#aab4c1"/><stop offset="1" stop-color="#7c8794"/></linearGradient>
+        </defs>
+        <circle cx="24" cy="23" r="20" stroke="url(#lgGold)" stroke-width="2.2"/>
+        <rect x="20.5" y="9" width="8" height="25" fill="url(#lgSilver)"/>
+        <rect x="28.5" y="15" width="7.5" height="19" fill="url(#lgSilver)"/>
+        <g stroke="#5c6874" stroke-width=".9" opacity=".7"><path d="M29.5 19h5.5M29.5 23h5.5M29.5 27h5.5M29.5 31h5.5"/></g>
+        <g fill="#5c6874" opacity=".6"><rect x="22.4" y="12" width="1.6" height="1.6"/><rect x="25.2" y="12" width="1.6" height="1.6"/><rect x="22.4" y="16" width="1.6" height="1.6"/><rect x="25.2" y="16" width="1.6" height="1.6"/><rect x="22.4" y="20" width="1.6" height="1.6"/><rect x="25.2" y="20" width="1.6" height="1.6"/></g>
+        <path d="M7 35 L19 24 L31 35 Z" fill="url(#lgGold)"/>
+        <rect x="16.4" y="29.5" width="5.2" height="5.2" fill="#1c130a"/>
+        <path d="M19 29.5v5.2M16.4 32.1h5.2" stroke="#e9b64a" stroke-width=".8"/>
+        <path d="M4 35 H40" stroke="url(#lgSilver)" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <span class="logo-word"><span class="g">L&amp;M</span> <span class="s">StavPro</span></span>
+    </a>
     <nav class="nav-links" id="navlinks">
       <a href="#services" data-i="nav_services">Služby</a>
       <a href="#why" data-i="nav_why">Proč my</a>
@@ -362,7 +383,7 @@
 <footer>
   <div class="wrap foot">
     <div>© <span id="year"></span> L&amp;M StavPro · IČO 17104653</div>
-    <div data-i="foot_r">Rekonstrukce a stavební práce · Praha</div>
+    <div data-i="foot_r">Stavíme kvalitu. Budujeme důvěru.</div>
   </div>
 </footer>
 
@@ -399,7 +420,7 @@ const I = {
     con_eyebrow:"Kontakt",con_h2:"Zavolejte nebo napište na WhatsApp",con_lead:"Ozveme se co nejdříve a domluvíme nezávaznou prohlídku zdarma.",con_wa:"💬 Napsat na WhatsApp",con_region:"📍 Praha a celá ČR",con_hours:"🕐 Po–So 7:00–19:00",
     f_name:"Jméno",f_phone:"Telefon",f_msg:"Popis zakázky",f_send:"Odeslat poptávku",
     ci1_b:"Telefon / WhatsApp",ci2_b:"E-mail",ci3_b:"Působnost",ci3_s:"Praha a celá ČR",ci4_b:"Instagram",ci5_b:"Provozní doba",ci5_s:"Po–So 7:00–19:00",
-    foot_r:"Rekonstrukce a stavební práce · Praha"
+    foot_r:"Stavíme kvalitu. Budujeme důvěru."
   },
   uk:{
     nav_services:"Послуги",nav_why:"Чому ми",nav_process:"Як працюємо",nav_gallery:"Роботи",nav_contact:"Контакти",nav_cta:"Заявка",
@@ -429,7 +450,7 @@ const I = {
     con_eyebrow:"Контакти",con_h2:"Зателефонуйте або напишіть у WhatsApp",con_lead:"Зв'яжемось якнайшвидше та домовимось про безкоштовний огляд.",con_wa:"💬 Написати у WhatsApp",con_region:"📍 Прага та вся Чехія",con_hours:"🕐 Пн–Сб 7:00–19:00",
     f_name:"Ім'я",f_phone:"Телефон",f_msg:"Опис роботи",f_send:"Надіслати заявку",
     ci1_b:"Телефон / WhatsApp",ci2_b:"E-mail",ci3_b:"Регіон роботи",ci3_s:"Прага та вся Чехія",ci4_b:"Instagram",ci5_b:"Графік роботи",ci5_s:"Пн–Сб 7:00–19:00",
-    foot_r:"Ремонти та будівельні роботи · Прага"
+    foot_r:"Будуємо якісно. Створюємо довіру."
   }
 };
 

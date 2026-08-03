@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 700" font-family="Georgia,'Times New Roman',serif">
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe4a6"/><stop offset="1" stop-color="#c8901f"/></linearGradient>
+    <linearGradient id="silver" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eef2f7"/><stop offset=".55" stop-color="#aab4c1"/><stop offset="1" stop-color="#7c8794"/></linearGradient>
+  </defs>
+  <rect width="640" height="700" fill="#0b0b0d"/>
+
+  <!-- емблема -->
+  <g transform="translate(150,40) scale(7)">
+    <circle cx="24" cy="23" r="20" fill="none" stroke="url(#gold)" stroke-width="2.2"/>
+    <rect x="20.5" y="9" width="8" height="25" fill="url(#silver)"/>
+    <rect x="28.5" y="15" width="7.5" height="19" fill="url(#silver)"/>
+    <g stroke="#5c6874" stroke-width=".9" opacity=".7"><path d="M29.5 19h5.5M29.5 23h5.5M29.5 27h5.5M29.5 31h5.5"/></g>
+    <g fill="#5c6874" opacity=".6"><rect x="22.4" y="12" width="1.6" height="1.6"/><rect x="25.2" y="12" width="1.6" height="1.6"/><rect x="22.4" y="16" width="1.6" height="1.6"/><rect x="25.2" y="16" width="1.6" height="1.6"/><rect x="22.4" y="20" width="1.6" height="1.6"/><rect x="25.2" y="20" width="1.6" height="1.6"/></g>
+    <path d="M7 35 L19 24 L31 35 Z" fill="url(#gold)"/>
+    <rect x="16.4" y="29.5" width="5.2" height="5.2" fill="#1c130a"/>
+    <path d="M19 29.5v5.2M16.4 32.1h5.2" stroke="#e9b64a" stroke-width=".8"/>
+    <path d="M4 35 H40" stroke="url(#silver)" stroke-width="1.6" stroke-linecap="round"/>
+  </g>
+
+  <!-- L&M -->
+  <text x="320" y="560" text-anchor="middle" font-size="130" font-weight="700" letter-spacing="6" fill="url(#gold)">L&amp;M</text>
+  <!-- StavPro -->
+  <text x="320" y="640" text-anchor="middle" font-size="86" font-weight="700" letter-spacing="4" fill="url(#silver)" font-family="Arial,Helvetica,sans-serif">StavPro</text>
+
+  <!-- слоган -->
+  <g transform="translate(320,678)">
+    <line x1="-250" y1="0" x2="-165" y2="0" stroke="url(#gold)" stroke-width="1.5"/>
+    <line x1="165" y1="0" x2="250" y2="0" stroke="url(#gold)" stroke-width="1.5"/>
+    <text x="0" y="5" text-anchor="middle" font-size="21" letter-spacing="2" fill="#d8ab52" font-family="Arial,Helvetica,sans-serif">STAVÍME KVALITU. BUDUJEME DŮVĚRU.</text>
+  </g>
+</svg>
