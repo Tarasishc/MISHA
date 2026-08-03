@@ -25,11 +25,12 @@
   html{scroll-behavior:smooth}
   body{background-color:var(--bg);
     background-image:
+      url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIiB2aWV3Qm94PSIwIDAgMzAwIDMwMCI+CjxnIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgxMzgsMTY5LDIwOCwwLjEzKSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2UtbGluZWNhcD0icm91bmQiPgo8cGF0aCBkPSJNMTggNzQgaDY0Ii8+PHBhdGggZD0iTTI2IDc0IGEyNCAyMiAwIDAgMSA0OCAwIi8+PHBhdGggZD0iTTUwIDUyIHYtOCIvPjxwYXRoIGQ9Ik0zOCA2MCBoMjQiLz4KPHJlY3QgeD0iMjAwIiB5PSIzMCIgd2lkdGg9IjI4IiBoZWlnaHQ9IjEzIi8+PHJlY3QgeD0iMjMxIiB5PSIzMCIgd2lkdGg9IjI4IiBoZWlnaHQ9IjEzIi8+CjxyZWN0IHg9IjE4NSIgeT0iNDYiIHdpZHRoPSIyOCIgaGVpZ2h0PSIxMyIvPjxyZWN0IHg9IjIxNiIgeT0iNDYiIHdpZHRoPSIyOCIgaGVpZ2h0PSIxMyIvPjxyZWN0IHg9IjI0NyIgeT0iNDYiIHdpZHRoPSIyMCIgaGVpZ2h0PSIxMyIvPgo8cmVjdCB4PSIyMDAiIHk9IjYyIiB3aWR0aD0iMjgiIGhlaWdodD0iMTMiLz48cmVjdCB4PSIyMzEiIHk9IjYyIiB3aWR0aD0iMjgiIGhlaWdodD0iMTMiLz4KPHBhdGggZD0iTTE1MCAxMzYgbDExIDYgdjEzIGwtMTEgNiBsLTExIC02IHYtMTMgeiIvPjxjaXJjbGUgY3g9IjE1MCIgY3k9IjE1NSIgcj0iNSIvPgo8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyMiwyMTIpIHJvdGF0ZSgtMTYpIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iOTYiIGhlaWdodD0iMjIiLz48cGF0aCBkPSJNMTQgMCB2OCBNMjggMCB2MTMgTTQyIDAgdjggTTU2IDAgdjEzIE03MCAwIHY4IE04NCAwIHYxMyIvPjwvZz4KPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjEwLDIwNSkiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI1MCIgaGVpZ2h0PSIyMCIgcng9IjQiLz48cGF0aCBkPSJNNTAgMTAgaDE0IHYxOCIvPjxwYXRoIGQ9Ik02NCAyOCB2MjIiLz48L2c+CjwvZz48L3N2Zz4="),
       linear-gradient(rgba(120,150,190,.05) 1px,transparent 1px),
       linear-gradient(90deg,rgba(120,150,190,.05) 1px,transparent 1px),
       linear-gradient(rgba(120,150,190,.09) 1px,transparent 1px),
       linear-gradient(90deg,rgba(120,150,190,.09) 1px,transparent 1px);
-    background-size:44px 44px,44px 44px,220px 220px,220px 220px;
+    background-size:300px 300px,44px 44px,44px 44px,220px 220px,220px 220px;
     background-position:center top;
     color:var(--text);font-family:var(--font);line-height:1.6;-webkit-font-smoothing:antialiased}
   a{color:inherit;text-decoration:none}
@@ -174,8 +175,6 @@
 
   /* HAZARD STRIPE (safety tape) */
   .hazard{height:9px;background:repeating-linear-gradient(45deg,#f5b820 0 14px,#1a1206 14px 28px)}
-  /* фоновий візерунок будівельних іконок */
-  .bg-deco{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;opacity:.3}
   /* напівпрозорі секції, щоб проглядала сітка-креслення */
   .why{background:rgba(22,26,33,.72)}
   .card,.step{background:rgba(27,33,43,.82);backdrop-filter:blur(2px)}
@@ -185,42 +184,6 @@
 
 <div class="hazard" aria-hidden="true"></div>
 
-<svg class="bg-deco" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <pattern id="constr" width="300" height="300" patternUnits="userSpaceOnUse">
-      <g fill="none" stroke="#8aa9d0" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
-        <!-- каска -->
-        <path d="M18 74 h64"/>
-        <path d="M26 74 a24 22 0 0 1 48 0"/>
-        <path d="M50 52 v-8"/>
-        <path d="M38 60 h24"/>
-        <!-- цегляна кладка -->
-        <rect x="200" y="30" width="28" height="13"/>
-        <rect x="231" y="30" width="28" height="13"/>
-        <rect x="185" y="46" width="28" height="13"/>
-        <rect x="216" y="46" width="28" height="13"/>
-        <rect x="247" y="46" width="20" height="13"/>
-        <rect x="200" y="62" width="28" height="13"/>
-        <rect x="231" y="62" width="28" height="13"/>
-        <!-- гайка (центр) -->
-        <path d="M150 136 l11 6 v13 l-11 6 l-11 -6 v-13 z"/>
-        <circle cx="150" cy="155" r="5"/>
-        <!-- рулетка -->
-        <g transform="translate(22,212) rotate(-16)">
-          <rect x="0" y="0" width="96" height="22"/>
-          <path d="M14 0 v8 M28 0 v13 M42 0 v8 M56 0 v13 M70 0 v8 M84 0 v13"/>
-        </g>
-        <!-- малярний валик -->
-        <g transform="translate(210,205)">
-          <rect x="0" y="0" width="50" height="20" rx="4"/>
-          <path d="M50 10 h14 v18"/>
-          <path d="M64 28 v22"/>
-        </g>
-      </g>
-    </pattern>
-  </defs>
-  <rect width="100%" height="100%" fill="url(#constr)"/>
-</svg>
 
 <header>
   <div class="wrap nav">
