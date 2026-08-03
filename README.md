@@ -13,7 +13,7 @@
 ## ✅ Вже підставлено
 - Назва: **L&M StavPro**
 - WhatsApp / телефон: **+420 773 475 913**
-- E-mail: **lapchakmykhailo@gmail.com**
+- E-mail: **lapchakmikhailo@gmail.com**
 
 ## ⚠️ Ще треба замінити (шукай у `index.html`)
 | Заглушка | На що замінити |
