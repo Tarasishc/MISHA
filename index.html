@@ -23,7 +23,15 @@
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.6;-webkit-font-smoothing:antialiased}
+  body{background-color:var(--bg);
+    background-image:
+      linear-gradient(rgba(120,150,190,.05) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(120,150,190,.05) 1px,transparent 1px),
+      linear-gradient(rgba(120,150,190,.09) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(120,150,190,.09) 1px,transparent 1px);
+    background-size:44px 44px,44px 44px,220px 220px,220px 220px;
+    background-position:center top;
+    color:var(--text);font-family:var(--font);line-height:1.6;-webkit-font-smoothing:antialiased}
   a{color:inherit;text-decoration:none}
   img{max-width:100%;display:block}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
@@ -163,9 +171,17 @@
   .ruler:before{height:14px;background-image:repeating-linear-gradient(90deg,#1a1206 0 2px,transparent 2px 25px)}
   .ruler:after{height:24px;background-image:repeating-linear-gradient(90deg,#1a1206 0 2.5px,transparent 2.5px 125px)}
   .trust .n{font-variant-numeric:tabular-nums}
+
+  /* HAZARD STRIPE (safety tape) */
+  .hazard{height:9px;background:repeating-linear-gradient(45deg,#f5b820 0 14px,#1a1206 14px 28px)}
+  /* напівпрозорі секції, щоб проглядала сітка-креслення */
+  .why{background:rgba(22,26,33,.72)}
+  .card,.step{background:rgba(27,33,43,.82);backdrop-filter:blur(2px)}
 </style>
 </head>
 <body>
+
+<div class="hazard" aria-hidden="true"></div>
 
 <header>
   <div class="wrap nav">
