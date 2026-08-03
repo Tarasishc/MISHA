@@ -123,6 +123,14 @@
   .contact-info .row .ico{width:44px;height:44px;border-radius:11px;background:rgba(245,166,35,.12);display:grid;place-items:center;font-size:20px;flex-shrink:0}
   .contact-info .row b{display:block;font-size:15px}
   .contact-info .row span{color:var(--muted);font-size:14px}
+  .contact-cta{text-align:center;max-width:680px;margin:0 auto}
+  .contact-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:26px}
+  .contact-actions .btn{font-size:16px}
+  .btn-wa{background:#25d366;color:#06331a;box-shadow:0 8px 24px rgba(37,211,102,.3)}
+  .btn-wa:hover{box-shadow:0 12px 30px rgba(37,211,102,.45)}
+  .btn-mail{background:var(--accent);color:#04223d;box-shadow:0 8px 24px rgba(46,155,255,.28)}
+  .btn-mail:hover{box-shadow:0 12px 30px rgba(46,155,255,.42)}
+  .contact-meta{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;color:var(--muted);font-size:15px}
 
   /* FOOTER */
   footer{border-top:1px solid var(--line);padding:34px 0;color:var(--muted);font-size:14px}
@@ -304,24 +312,18 @@
 <!-- CONTACT -->
 <section class="section why" id="contact">
   <div class="wrap">
-    <div class="contact-grid">
-      <div>
-        <div class="eyebrow" data-i="con_eyebrow">Kontakt</div>
-        <h2 data-i="con_h2">Napište nám poptávku</h2>
-        <p class="lead" style="margin-bottom:26px" data-i="con_lead">Vyplňte formulář nebo zavolejte. Ozveme se do 24 hodin.</p>
-        <form onsubmit="return sendForm(event)">
-          <div class="field"><label data-i="f_name">Jméno</label><input required name="name" /></div>
-          <div class="field"><label data-i="f_phone">Telefon</label><input required name="phone" type="tel" /></div>
-          <div class="field"><label data-i="f_msg">Popis zakázky</label><textarea rows="4" name="msg"></textarea></div>
-          <button class="btn btn-primary" type="submit" data-i="f_send">Odeslat poptávku</button>
-        </form>
+    <div class="contact-cta">
+      <div class="eyebrow" data-i="con_eyebrow">Kontakt</div>
+      <h2 data-i="con_h2">Zavolejte nebo napište na WhatsApp</h2>
+      <p class="lead" data-i="con_lead" style="margin:0 auto 30px">Ozveme se co nejdříve a domluvíme nezávaznou prohlídku zdarma.</p>
+      <div class="contact-actions">
+        <a href="https://wa.me/420773475913" target="_blank" class="btn btn-wa" data-i="con_wa">💬 Napsat na WhatsApp</a>
+        <a href="tel:+420773475913" class="btn btn-primary">☎ +420 773 475 913</a>
+        <a href="mailto:lapchakmykhailo@gmail.com" class="btn btn-mail">✉️ lapchakmykhailo@gmail.com</a>
       </div>
-      <div class="contact-info">
-        <div class="row"><div class="ico">📞</div><div><b data-i="ci1_b">Telefon / WhatsApp</b><a href="tel:+420773475913"><span>+420 773 475 913</span></a></div></div>
-        <div class="row"><div class="ico">✉️</div><div><b data-i="ci2_b">E-mail</b><span>lapchakmykhailo@gmail.com</span></div></div>
-        <div class="row"><div class="ico">📍</div><div><b data-i="ci3_b">Působnost</b><span data-i="ci3_s">Praha a Středočeský kraj</span></div></div>
-        <div class="row"><div class="ico">📷</div><div><b data-i="ci4_b">Instagram</b><span>@michal_z_michle</span></div></div>
-        <div class="row" style="border:none"><div class="ico">🕐</div><div><b data-i="ci5_b">Provozní doba</b><span data-i="ci5_s">Po–So 7:00–19:00</span></div></div>
+      <div class="contact-meta">
+        <span data-i="con_region">📍 Praha a Středočeský kraj</span>
+        <span data-i="con_hours">🕐 Po–So 7:00–19:00</span>
       </div>
     </div>
   </div>
@@ -364,7 +366,7 @@ const I = {
     gal_eyebrow:"Naše realizace",gal_h2:"Výsledky mluví za nás",gal_lead:"Ukázka dokončených projektů. Fotky vlastních realizací zde brzy doplníme.",
     g1:"Rekonstrukce bytu",g2:"Koupelna",g3:"Kuchyň",g4:"Zednické práce",g5:"Omítky",g6:"Fasáda",
     band_h:"Máte plán? Domluvme se.",band_p:"Nezávazná konzultace a cenová nabídka zdarma.",band_cta:"Získat nabídku",
-    con_eyebrow:"Kontakt",con_h2:"Napište nám poptávku",con_lead:"Vyplňte formulář nebo zavolejte. Ozveme se do 24 hodin.",
+    con_eyebrow:"Kontakt",con_h2:"Zavolejte nebo napište na WhatsApp",con_lead:"Ozveme se co nejdříve a domluvíme nezávaznou prohlídku zdarma.",con_wa:"💬 Napsat na WhatsApp",con_region:"📍 Praha a Středočeský kraj",con_hours:"🕐 Po–So 7:00–19:00",
     f_name:"Jméno",f_phone:"Telefon",f_msg:"Popis zakázky",f_send:"Odeslat poptávku",
     ci1_b:"Telefon / WhatsApp",ci2_b:"E-mail",ci3_b:"Působnost",ci3_s:"Praha a Středočeský kraj",ci4_b:"Instagram",ci5_b:"Provozní doba",ci5_s:"Po–So 7:00–19:00",
     foot_r:"Rekonstrukce a stavební práce · Praha"
@@ -394,7 +396,7 @@ const I = {
     gal_eyebrow:"Наші роботи",gal_h2:"Результат говорить сам за себе",gal_lead:"Приклади завершених проєктів. Фото власних робіт додамо найближчим часом.",
     g1:"Ремонт квартири",g2:"Ванна кімната",g3:"Кухня",g4:"Мулярні роботи",g5:"Штукатурка",g6:"Фасад",
     band_h:"Є план? Давайте обговоримо.",band_p:"Безкоштовна консультація та кошторис.",band_cta:"Отримати пропозицію",
-    con_eyebrow:"Контакти",con_h2:"Залиште заявку",con_lead:"Заповніть форму або зателефонуйте. Відповімо протягом 24 годин.",
+    con_eyebrow:"Контакти",con_h2:"Зателефонуйте або напишіть у WhatsApp",con_lead:"Зв'яжемось якнайшвидше та домовимось про безкоштовний огляд.",con_wa:"💬 Написати у WhatsApp",con_region:"📍 Прага та Середньочеський край",con_hours:"🕐 Пн–Сб 7:00–19:00",
     f_name:"Ім'я",f_phone:"Телефон",f_msg:"Опис роботи",f_send:"Надіслати заявку",
     ci1_b:"Телефон / WhatsApp",ci2_b:"E-mail",ci3_b:"Регіон роботи",ci3_s:"Прага та Середньочеський край",ci4_b:"Instagram",ci5_b:"Графік роботи",ci5_s:"Пн–Сб 7:00–19:00",
     foot_r:"Ремонти та будівельні роботи · Прага"
