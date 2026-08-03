@@ -11,7 +11,7 @@
 - Адаптив під мобільні
 
 ## ✅ Вже підставлено
-- Назва: **L&M Reality**
+- Назва: **L&M StavPro**
 - WhatsApp / телефон: **+420 773 475 913**
 - E-mail: **lapchakmykhailo@gmail.com**
 
