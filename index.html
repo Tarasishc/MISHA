@@ -203,6 +203,8 @@
 
   /* PROJECTS (portfolio) */
   .projects{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:36px}
+  @media(max-width:900px){.projects{grid-template-columns:1fr 1fr}}
+  @media(max-width:640px){.projects{grid-template-columns:1fr;gap:18px}}
   .project{display:block;text-align:left;background:none;border:none;padding:0;cursor:pointer;font:inherit;color:inherit}
   .project-img{position:relative;aspect-ratio:4/3;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#161a21}
   .project-img img{width:100%;height:100%;object-fit:cover;display:block;transition:.35s transform}
@@ -516,7 +518,7 @@ function sendForm(e){
 }
 
 document.getElementById('year').textContent=new Date().getFullYear();
-const PROJECTS=[{"title": {"cs": "Rekonstrukce koupelny", "uk": "Ремонт ванної кімнати"}, "cover": 2, "photos": [{"src": "images/etapa-1.jpg", "cap": {"cs": "Obklady stěn", "uk": "Плитка на стінах"}}, {"src": "images/etapa-2.jpg", "cap": {"cs": "Dlažba", "uk": "Плитка на підлозі"}}, {"src": "images/etapa-3.jpg", "cap": {"cs": "Hotová koupelna", "uk": "Готова ванна"}}]}, {"title": {"cs": "Koupelna", "uk": "Ванна кімната"}, "cover": 1, "photos": [{"src": "images/koupelna2-umyvadlo.jpg", "cap": {"cs": "Umyvadlo a zrcadlo", "uk": "Раковина та дзеркало"}}, {"src": "images/koupelna2-wc.jpg", "cap": {"cs": "WC a topný žebřík", "uk": "Унітаз та рушникосушка"}}]}, {"title": {"cs": "Dřevěné schodiště", "uk": "Дерев’яні сходи"}, "cover": 0, "photos": [{"src": "images/schodiste.jpg", "cap": {"cs": "Dřevěné schodiště", "uk": "Дерев’яні сходи"}}]}];
+const PROJECTS=[{"title": {"cs": "Rekonstrukce koupelny", "uk": "Ремонт ванної кімнати"}, "cover": 2, "photos": [{"src": "images/etapa-1.jpg", "cap": {"cs": "Obklady stěn", "uk": "Плитка на стінах"}}, {"src": "images/etapa-2.jpg", "cap": {"cs": "Dlažba", "uk": "Плитка на підлозі"}}, {"src": "images/etapa-3.jpg", "cap": {"cs": "Hotová koupelna", "uk": "Готова ванна"}}]}, {"title": {"cs": "Koupelna", "uk": "Ванна кімната"}, "cover": 3, "photos": [{"src": "images/koupelna2-pred.jpg", "cap": {"cs": "Před rekonstrukcí", "uk": "До ремонту"}}, {"src": "images/koupelna2-demontaz.jpg", "cap": {"cs": "Demontáž", "uk": "Демонтаж"}}, {"src": "images/koupelna2-umyvadlo.jpg", "cap": {"cs": "Umyvadlo a zrcadlo", "uk": "Раковина та дзеркало"}}, {"src": "images/koupelna2-wc.jpg", "cap": {"cs": "Hotová koupelna", "uk": "Готова ванна кімната"}}]}, {"title": {"cs": "Dřevěné schodiště", "uk": "Дерев’яні сходи"}, "cover": 0, "photos": [{"src": "images/schodiste.jpg", "cap": {"cs": "Dřevěné schodiště", "uk": "Дерев’яні сходи"}}]}];
 const VIEW={cs:"Zobrazit postup",uk:"Дивитись процес"},VIEW1={cs:"Zvětšit foto",uk:"Збільшити"};
 function _lng(){return document.documentElement.lang==="uk"?"uk":"cs";}
 function _t(o){return o[_lng()]||o.cs;}
