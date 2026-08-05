@@ -95,6 +95,9 @@
   .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px;transition:.2s}
   .card:hover{border-color:var(--brand);transform:translateY(-3px)}
   .card .ico{width:52px;height:52px;border-radius:12px;background:rgba(201,162,74,.13);display:grid;place-items:center;font-size:26px;margin-bottom:16px}
+  #services .ico svg,#why .ico svg{width:26px;height:26px;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  #services .ico svg{stroke:var(--brand-2)}
+  #why .ico svg{stroke:#c6cfdb}
   .card h3{font-size:20px;margin-bottom:8px}
   .card p{color:var(--muted);font-size:15px}
   .card ul{list-style:none;margin-top:12px;display:flex;flex-direction:column;gap:6px}
@@ -297,7 +300,7 @@
     <p class="lead" data-i="serv_lead">Od hrubé stavby po finální detaily. Řekněte nám záměr — postaráme se o zbytek.</p>
     <div class="grid cards-3" style="margin-top:36px">
       <div class="card">
-        <div class="ico">🏠</div>
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/></svg></div>
         <h3 data-i="s1_h">Rekonstrukce bytů a domů</h3>
         <p data-i="s1_p">Kompletní přestavby „pod klíč" i dílčí úpravy interiéru.</p>
         <ul>
@@ -307,7 +310,7 @@
         </ul>
       </div>
       <div class="card">
-        <div class="ico">🧱</div>
+        <div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="15" rx="1"/><path d="M3 9.5h18M3 14.5h18M9 4.5v5M15 9.5v5M9 14.5v5"/></svg></div>
         <h3 data-i="s2_h">Zednické a hrubé práce</h3>
         <p data-i="s2_p">Kvalitní řemeslo jako základ každé stavby.</p>
         <ul>
@@ -317,7 +320,7 @@
         </ul>
       </div>
       <div class="card">
-        <div class="ico">🔧</div>
+        <div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="12" height="6" rx="1.5"/><path d="M15 7h4v4h-7"/><path d="M12 11v2.5h-1.5V21"/></svg></div>
         <h3 data-i="s3_h">Dokončovací práce</h3>
         <p data-i="s3_p">Detaily, na kterých záleží nejvíc.</p>
         <ul>
@@ -347,10 +350,10 @@
     <div class="eyebrow" data-i="why_eyebrow">Proč zákazníci volí nás</div>
     <h2 data-i="why_h2">Práce bez stresu a překvapení</h2>
     <div class="grid cards-4" style="margin-top:36px">
-      <div class="card"><div class="ico">📋</div><h3 data-i="w1_h">Jasná cena předem</h3><p data-i="w1_p">Detailní rozpočet a smlouva před začátkem prací.</p></div>
-      <div class="card"><div class="ico">⏱️</div><h3 data-i="w2_h">Dodržíme termín</h3><p data-i="w2_p">Termíny plníme — váš čas i peníze jsou pro nás priorita.</p></div>
-      <div class="card"><div class="ico">🛡️</div><h3 data-i="w3_h">Záruka na práci</h3><p data-i="w3_p">Za odvedenou práci ručíme až 24 měsíců.</p></div>
-      <div class="card"><div class="ico">🇺🇦🇨🇿</div><h3 data-i="w4_h">Mluvíme vaší řečí</h3><p data-i="w4_p">Domluvíme se česky i ukrajinsky — bez nedorozumění.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M20.6 12.4 12.4 4.2A2 2 0 0 0 11 3.6H5.4A1.8 1.8 0 0 0 3.6 5.4V11a2 2 0 0 0 .6 1.4l8.2 8.2a1.6 1.6 0 0 0 2.3 0l5.9-5.9a1.6 1.6 0 0 0 0-2.3Z"/><circle cx="7.6" cy="7.6" r="1.3"/></svg></div><h3 data-i="w1_h">Jasná cena předem</h3><p data-i="w1_p">Detailní rozpočet a smlouva před začátkem prací.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 8.5V13l3 1.8M9.5 3h5"/></svg></div><h3 data-i="w2_h">Dodržíme termín</h3><p data-i="w2_p">Termíny plníme — váš čas i peníze jsou pro nás priorita.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 7.8-7 9-4-1.2-7-4.5-7-9V6l7-3Z"/><path d="M8.8 12l2.2 2.2 4.2-4.4"/></svg></div><h3 data-i="w3_h">Záruka na práci</h3><p data-i="w3_p">Za odvedenou práci ručíme až 24 měsíců.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M4 5h10a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H8l-3.5 2.8V13H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"/><path d="M18 9h2a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-1v2.4L16 17"/></svg></div><h3 data-i="w4_h">Mluvíme vaší řečí</h3><p data-i="w4_p">Domluvíme se česky i ukrajinsky — bez nedorozumění.</p></div>
     </div>
   </div>
 </section>
