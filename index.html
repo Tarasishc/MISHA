@@ -119,6 +119,15 @@
   .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
   .shot{aspect-ratio:1/1;border-radius:14px;background-size:cover;background-position:center;border:1px solid var(--line);position:relative;overflow:hidden}
   .shot span{position:absolute;left:12px;bottom:12px;background:rgba(15,17,21,.8);padding:5px 12px;border-radius:999px;font-size:12px;font-weight:700}
+  /* STAGES (поетапна галерея) */
+  .stages{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .stage{display:flex;flex-direction:column;gap:12px}
+  .stage-img{position:relative;aspect-ratio:3/4;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:linear-gradient(135deg,#20262f,#161a21);display:grid;place-items:center}
+  .stage-img img{width:100%;height:100%;object-fit:cover;display:block}
+  .stage-img.noimg img{display:none}
+  .stage-img.noimg::after{content:"📷 фото";color:var(--muted);font-size:15px;font-weight:700}
+  .stage-num{position:absolute;top:12px;left:12px;z-index:2;width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#1a1206;font-weight:900;display:grid;place-items:center;font-size:16px;box-shadow:0 4px 12px rgba(0,0,0,.35)}
+  .stage figcaption{text-align:center;font-weight:700;color:var(--text);font-size:16px}
 
   /* CTA band */
   .band{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#1a1206;border-radius:22px;padding:46px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
@@ -171,6 +180,7 @@
     .contact-actions .btn{white-space:normal;word-break:break-word;justify-content:center}
     .logo-word{font-size:17px}
     .hero h1{font-size:clamp(30px,8vw,40px)}
+    .stages{grid-template-columns:1fr}
   }
   /* mobile menu open */
   .nav-links.open{display:flex;position:absolute;top:68px;left:0;right:0;flex-direction:column;background:var(--bg-soft);padding:18px 20px;border-bottom:1px solid var(--line);gap:16px}
@@ -336,15 +346,21 @@
 <section class="section why" id="gallery">
   <div class="wrap">
     <div class="eyebrow" data-i="gal_eyebrow">Naše realizace</div>
-    <h2 data-i="gal_h2">Výsledky mluví za nás</h2>
-    <p class="lead" data-i="gal_lead">Ukázka dokončených projektů. Fotky vlastních realizací zde brzy doplníme.</p>
-    <div class="gallery" style="margin-top:36px">
-      <div class="shot" style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80')"><span data-i="g1">Rekonstrukce bytu</span></div>
-      <div class="shot" style="background-image:url('https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80')"><span data-i="g2">Koupelna</span></div>
-      <div class="shot" style="background-image:url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=600&q=80')"><span data-i="g3">Kuchyň</span></div>
-      <div class="shot" style="background-image:url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=600&q=80')"><span data-i="g4">Zednické práce</span></div>
-      <div class="shot" style="background-image:url('https://images.unsplash.com/photo-1590725175785-de025b0e5b93?auto=format&fit=crop&w=600&q=80')"><span data-i="g5">Omítky</span></div>
-      <div class="shot" style="background-image:url('https://images.unsplash.com/photo-1581093458791-9d42e3c7e5f5?auto=format&fit=crop&w=600&q=80')"><span data-i="g6">Fasáda</span></div>
+    <h2 data-i="gal_h2">Rekonstrukce koupelny — krok za krokem</h2>
+    <p class="lead" data-i="gal_lead">Ukázka jedné z našich zakázek: od přípravy a izolace až po hotovou koupelnu.</p>
+    <div class="stages" style="margin-top:36px">
+      <figure class="stage">
+        <div class="stage-img"><span class="stage-num">1</span><img src="images/etapa-1.jpg" alt="Příprava a hydroizolace koupelny" loading="lazy" onerror="this.closest('.stage-img').classList.add('noimg')"></div>
+        <figcaption data-i="st1">Příprava a izolace</figcaption>
+      </figure>
+      <figure class="stage">
+        <div class="stage-img"><span class="stage-num">2</span><img src="images/etapa-2.jpg" alt="Obklady a dlažba v koupelně" loading="lazy" onerror="this.closest('.stage-img').classList.add('noimg')"></div>
+        <figcaption data-i="st2">Obklady a dlažba</figcaption>
+      </figure>
+      <figure class="stage">
+        <div class="stage-img"><span class="stage-num">3</span><img src="images/etapa-3.jpg" alt="Hotová koupelna" loading="lazy" onerror="this.closest('.stage-img').classList.add('noimg')"></div>
+        <figcaption data-i="st3">Hotová koupelna</figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -415,8 +431,8 @@ const I = {
     p2_h:"Prohlídka a rozpočet",p2_p:"Přijedeme, zaměříme a připravíme jasnou cenovou nabídku.",
     p3_h:"Realizace",p3_p:"Pustíme se do práce podle harmonogramu a smlouvy.",
     p4_h:"Předání a úklid",p4_p:"Uklidíme, předáme hotové dílo a poskytneme záruku.",
-    gal_eyebrow:"Naše realizace",gal_h2:"Výsledky mluví za nás",gal_lead:"Ukázka dokončených projektů. Fotky vlastních realizací zde brzy doplníme.",
-    g1:"Rekonstrukce bytu",g2:"Koupelna",g3:"Kuchyň",g4:"Zednické práce",g5:"Omítky",g6:"Fasáda",
+    gal_eyebrow:"Naše realizace",gal_h2:"Rekonstrukce koupelny — krok za krokem",gal_lead:"Ukázka jedné z našich zakázek: od přípravy a izolace až po hotovou koupelnu.",
+    st1:"Příprava a izolace",st2:"Obklady a dlažba",st3:"Hotová koupelna",
     band_h:"Máte plán? Domluvme se.",band_p:"Nezávazná konzultace a cenová nabídka zdarma.",band_cta:"Získat nabídku",
     con_eyebrow:"Kontakt",con_h2:"Zavolejte nebo napište na WhatsApp",con_lead:"Ozveme se co nejdříve a domluvíme nezávaznou prohlídku zdarma.",con_wa:"💬 Napsat na WhatsApp",con_region:"📍 Praha a celá ČR",con_hours:"🕐 Po–So 7:00–19:00",
     f_name:"Jméno",f_phone:"Telefon",f_msg:"Popis zakázky",f_send:"Odeslat poptávku",
@@ -445,8 +461,8 @@ const I = {
     p2_h:"Огляд і кошторис",p2_p:"Приїжджаємо, робимо заміри та готуємо чітку пропозицію.",
     p3_h:"Виконання",p3_p:"Беремось до роботи за графіком і договором.",
     p4_h:"Здача та прибирання",p4_p:"Прибираємо, здаємо готовий об'єкт і даємо гарантію.",
-    gal_eyebrow:"Наші роботи",gal_h2:"Результат говорить сам за себе",gal_lead:"Приклади завершених проєктів. Фото власних робіт додамо найближчим часом.",
-    g1:"Ремонт квартири",g2:"Ванна кімната",g3:"Кухня",g4:"Мулярні роботи",g5:"Штукатурка",g6:"Фасад",
+    gal_eyebrow:"Наші роботи",gal_h2:"Ремонт ванної — крок за кроком",gal_lead:"Приклад одного з наших обʼєктів: від підготовки та гідроізоляції до готової ванної.",
+    st1:"Підготовка та ізоляція",st2:"Облицювання плиткою",st3:"Готова ванна",
     band_h:"Є план? Давайте обговоримо.",band_p:"Безкоштовна консультація та кошторис.",band_cta:"Отримати пропозицію",
     con_eyebrow:"Контакти",con_h2:"Зателефонуйте або напишіть у WhatsApp",con_lead:"Зв'яжемось якнайшвидше та домовимось про безкоштовний огляд.",con_wa:"💬 Написати у WhatsApp",con_region:"📍 Прага та вся Чехія",con_hours:"🕐 Пн–Сб 7:00–19:00",
     f_name:"Ім'я",f_phone:"Телефон",f_msg:"Опис роботи",f_send:"Надіслати заявку",
