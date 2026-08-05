@@ -7,16 +7,16 @@
 <meta name="description" content="Rekonstrukce bytů a domů, zednické a hrubé stavební práce. Kvalitně, včas, se zárukou. Praha a celá ČR." />
 <style>
   :root{
-    --bg:#0f1115;
-    --bg-soft:#161a21;
-    --card:#1b212b;
-    --line:#28303c;
-    --text:#eef2f7;
-    --muted:#9aa7b8;
-    --brand:#f5a623;      /* budivelnyj oranzhevyj */
-    --brand-2:#ffc861;
-    --accent:#2e9bff;
-    --ok:#37c871;
+    --bg:#0e0f13;
+    --bg-soft:#15171d;
+    --card:#191c23;
+    --line:#2b2f39;
+    --text:#f0f1f4;
+    --muted:#a4abb8;
+    --brand:#c9a24a;      /* metallic gold */
+    --brand-2:#e7cd85;
+    --accent:#9fb0c4;
+    --ok:#4bb47b;
     --radius:16px;
     --maxw:1140px;
     --font:'Segoe UI',system-ui,-apple-system,Roboto,Arial,sans-serif;
@@ -38,8 +38,8 @@
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
   .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:999px;font-weight:700;font-size:16px;cursor:pointer;border:none;transition:.2s transform,.2s box-shadow;white-space:nowrap}
   .btn:active{transform:translateY(1px)}
-  .btn-primary{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#1a1206;box-shadow:0 8px 24px rgba(245,166,35,.28)}
-  .btn-primary:hover{box-shadow:0 12px 30px rgba(245,166,35,.4)}
+  .btn-primary{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#1a1206;box-shadow:0 8px 24px rgba(201,162,74,.26)}
+  .btn-primary:hover{box-shadow:0 12px 30px rgba(201,162,74,.4)}
   .btn-ghost{background:transparent;border:1.5px solid var(--line);color:var(--text)}
   .btn-ghost:hover{border-color:var(--brand)}
   .section{padding:78px 0}
@@ -69,8 +69,8 @@
   /* HERO */
   .hero{position:relative;overflow:hidden}
   .hero:before{content:"";position:absolute;inset:0;background:
-    radial-gradient(700px 400px at 80% -10%,rgba(245,166,35,.16),transparent 60%),
-    radial-gradient(600px 500px at -10% 30%,rgba(46,155,255,.10),transparent 60%)}
+    radial-gradient(700px 400px at 80% -10%,rgba(201,162,74,.15),transparent 60%),
+    radial-gradient(600px 500px at -10% 30%,rgba(159,176,196,.06),transparent 60%)}
   .hero-inner{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding:70px 0 84px}
   .hero h1{font-size:clamp(34px,5.2vw,56px);font-weight:900;margin-bottom:20px}
   .hero h1 .hl{color:var(--brand)}
@@ -94,22 +94,22 @@
   .cards-3{grid-template-columns:repeat(3,1fr)}
   .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px;transition:.2s}
   .card:hover{border-color:var(--brand);transform:translateY(-3px)}
-  .card .ico{width:52px;height:52px;border-radius:12px;background:rgba(245,166,35,.12);display:grid;place-items:center;font-size:26px;margin-bottom:16px}
+  .card .ico{width:52px;height:52px;border-radius:12px;background:rgba(201,162,74,.13);display:grid;place-items:center;font-size:26px;margin-bottom:16px}
   .card h3{font-size:20px;margin-bottom:8px}
   .card p{color:var(--muted);font-size:15px}
   .card ul{list-style:none;margin-top:12px;display:flex;flex-direction:column;gap:6px}
   .card li{color:var(--muted);font-size:14px;padding-left:22px;position:relative}
-  .card li:before{content:"✓";position:absolute;left:0;color:var(--ok);font-weight:900}
+  .card li:before{content:"✓";position:absolute;left:0;color:var(--brand);font-weight:900}
 
   /* WHY */
   .why{background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
   .cards-4{grid-template-columns:repeat(4,1fr)}
   .why .card{background:transparent;border:none;padding:0}
   .why .card:hover{transform:none}
-  .why .ico{background:rgba(46,155,255,.12)}
+  .why .ico{background:rgba(159,176,196,.14)}
   #why .card{background:transparent;border:none;padding:0}
   #why .card:hover{transform:none}
-  #why .ico{background:rgba(46,155,255,.12)}
+  #why .ico{background:rgba(159,176,196,.14)}
 
   /* PROCESS */
   .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:s}
@@ -146,7 +146,7 @@
   .field input,.field textarea{width:100%;background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;padding:13px 15px;color:var(--text);font-size:15px;font-family:inherit}
   .field input:focus,.field textarea:focus{outline:none;border-color:var(--brand)}
   .contact-info .row{display:flex;gap:14px;align-items:flex-start;padding:16px 0;border-bottom:1px solid var(--line)}
-  .contact-info .row .ico{width:44px;height:44px;border-radius:11px;background:rgba(245,166,35,.12);display:grid;place-items:center;font-size:20px;flex-shrink:0}
+  .contact-info .row .ico{width:44px;height:44px;border-radius:11px;background:rgba(201,162,74,.13);display:grid;place-items:center;font-size:20px;flex-shrink:0}
   .contact-info .row b{display:block;font-size:15px}
   .contact-info .row span{color:var(--muted);font-size:14px}
   .contact-cta{text-align:center;max-width:680px;margin:0 auto}
@@ -154,8 +154,8 @@
   .contact-actions .btn{font-size:16px}
   .btn-wa{background:#25d366;color:#06331a;box-shadow:0 8px 24px rgba(37,211,102,.3)}
   .btn-wa:hover{box-shadow:0 12px 30px rgba(37,211,102,.45)}
-  .btn-mail{background:var(--accent);color:#04223d;box-shadow:0 8px 24px rgba(46,155,255,.28)}
-  .btn-mail:hover{box-shadow:0 12px 30px rgba(46,155,255,.42)}
+  .btn-mail{background:var(--accent);color:#10151b;box-shadow:0 8px 24px rgba(159,176,196,.22)}
+  .btn-mail:hover{box-shadow:0 12px 30px rgba(159,176,196,.34)}
   .contact-meta{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;color:var(--muted);font-size:15px}
 
   /* FOOTER */
@@ -192,14 +192,14 @@
   .nav-links.open{display:flex;position:absolute;top:68px;left:0;right:0;flex-direction:column;background:var(--bg-soft);padding:18px 20px;border-bottom:1px solid var(--line);gap:16px}
 
   /* CONSTRUCTION RULER (tape measure) */
-  .ruler{height:46px;background:linear-gradient(#ffd64a,#f5b820);border-top:3px solid #1a1206;border-bottom:3px solid #1a1206;position:relative;overflow:hidden}
+  .ruler{height:46px;background:linear-gradient(#e6c877,#caa24a);border-top:3px solid #1a1206;border-bottom:3px solid #1a1206;position:relative;overflow:hidden}
   .ruler:before,.ruler:after{content:"";position:absolute;left:0;right:0;top:0}
   .ruler:before{height:14px;background-image:repeating-linear-gradient(90deg,#1a1206 0 2px,transparent 2px 25px)}
   .ruler:after{height:24px;background-image:repeating-linear-gradient(90deg,#1a1206 0 2.5px,transparent 2.5px 125px)}
   .trust .n{font-variant-numeric:tabular-nums}
 
   /* HAZARD STRIPE (safety tape) */
-  .hazard{height:9px;background:repeating-linear-gradient(45deg,#f5b820 0 14px,#1a1206 14px 28px)}
+  .hazard{height:9px;background:repeating-linear-gradient(45deg,#caa24a 0 14px,#1a1206 14px 28px)}
   /* напівпрозорі секції, щоб проглядала сітка-креслення */
   .why{background:rgba(22,26,33,.72)}
   .card,.step{background:rgba(27,33,43,.82);backdrop-filter:blur(2px)}
@@ -226,7 +226,7 @@
   .lb-close{position:absolute;top:16px;right:18px;background:rgba(255,255,255,.12);border:none;color:#fff;width:44px;height:44px;border-radius:50%;font-size:20px;cursor:pointer}
   .lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.12);border:none;color:#fff;width:52px;height:52px;border-radius:50%;font-size:30px;cursor:pointer;display:grid;place-items:center}
   .lb-prev{left:14px}.lb-next{right:14px}
-  .lb-nav:hover,.lb-close:hover{background:rgba(245,166,35,.9);color:#1a1206}
+  .lb-nav:hover,.lb-close:hover{background:rgba(201,162,74,.92);color:#1a1206}
   .lb-nav[hidden],.lb-counter[hidden]{display:none}
 </style>
 </head>
