@@ -200,6 +200,29 @@
   /* напівпрозорі секції, щоб проглядала сітка-креслення */
   .why{background:rgba(22,26,33,.72)}
   .card,.step{background:rgba(27,33,43,.82);backdrop-filter:blur(2px)}
+
+  /* PROJECTS (portfolio) */
+  .projects{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:36px}
+  .project{display:block;text-align:left;background:none;border:none;padding:0;cursor:pointer;font:inherit;color:inherit}
+  .project-img{position:relative;aspect-ratio:4/3;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#161a21}
+  .project-img img{width:100%;height:100%;object-fit:cover;display:block;transition:.35s transform}
+  .project:hover .project-img img{transform:scale(1.05)}
+  .project-badge{position:absolute;top:12px;right:12px;background:rgba(15,17,21,.82);backdrop-filter:blur(4px);color:#fff;font-size:12px;font-weight:700;padding:6px 11px;border-radius:999px}
+  .project-view{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center;padding:16px;background:linear-gradient(transparent 55%,rgba(0,0,0,.62));opacity:0;transition:.3s}
+  .project:hover .project-view,.project:focus-visible .project-view{opacity:1}
+  .project-view span{background:var(--brand);color:#1a1206;font-weight:800;font-size:13px;padding:8px 16px;border-radius:999px}
+  .project-title{margin-top:12px;font-weight:700;font-size:17px;color:var(--text)}
+  .lightbox{position:fixed;inset:0;z-index:200;background:rgba(8,9,12,.94);display:none;align-items:center;justify-content:center;padding:20px}
+  .lightbox.open{display:flex}
+  .lb-stage{max-width:min(1000px,92vw);display:flex;flex-direction:column;align-items:center;gap:12px}
+  .lb-img{max-width:100%;max-height:74vh;border-radius:12px;object-fit:contain;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+  .lb-cap{color:#e6edf5;font-weight:700;font-size:15px;text-align:center}
+  .lb-counter{color:var(--muted);font-size:13px;font-weight:700}
+  .lb-close{position:absolute;top:16px;right:18px;background:rgba(255,255,255,.12);border:none;color:#fff;width:44px;height:44px;border-radius:50%;font-size:20px;cursor:pointer}
+  .lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.12);border:none;color:#fff;width:52px;height:52px;border-radius:50%;font-size:30px;cursor:pointer;display:grid;place-items:center}
+  .lb-prev{left:14px}.lb-next{right:14px}
+  .lb-nav:hover,.lb-close:hover{background:rgba(245,166,35,.9);color:#1a1206}
+  .lb-nav[hidden],.lb-counter[hidden]{display:none}
 </style>
 </head>
 <body>
@@ -336,16 +359,8 @@
   <div class="wrap">
     <div class="eyebrow" data-i="gal_eyebrow">Naše realizace</div>
     <h2 data-i="gal_h2">Naše realizace</h2>
-    <p class="lead" data-i="gal_lead">Ukázky našich prací — rekonstrukce koupelny a interiérová řešení.</p>
-    <div class="stages" style="margin-top:36px">
-      <figure class="stage"><div class="stage-img"><img src="images/etapa-1.jpg" alt="Rekonstrukce koupelny — obklady" loading="lazy" onerror="this.closest('.stage-img').classList.add('noimg')"></div><figcaption data-i="st1">Koupelna — obklady</figcaption></figure>
-      <figure class="stage"><div class="stage-img"><img src="images/etapa-2.jpg" alt="Dlažba koupelny" loading="lazy" onerror="this.closest('.stage-img').classList.add('noimg')"></div><figcaption data-i="st2">Koupelna — dlažba</figcaption></figure>
-      <figure class="stage"><div class="stage-img"><img src="images/etapa-3.jpg" alt="Moderní koupelna" loading="lazy" onerror="this.closest('.stage-img').classList.add('noimg')"></div><figcaption data-i="st3">Moderní koupelna</figcaption></figure>
-      <figure class="stage"><div class="stage-img"><img src="images/koupelna2-umyvadlo.jpg" alt="Umyvadlo a zrcadlo" loading="lazy" onerror="this.closest('.stage-img').classList.add('noimg')"></div><figcaption data-i="st4">Umyvadlo a zrcadlo</figcaption></figure>
-      <figure class="stage"><div class="stage-img"><img src="images/koupelna2-wc.jpg" alt="Hotová koupelna" loading="lazy" onerror="this.closest('.stage-img').classList.add('noimg')"></div><figcaption data-i="st5">Hotová koupelna</figcaption></figure>
-      <figure class="stage"><div class="stage-img"><img src="images/schodiste.jpg" alt="Dřevěné schodiště na míru" loading="lazy" onerror="this.closest('.stage-img').classList.add('noimg')"></div><figcaption data-i="st6">Dřevěné schodiště</figcaption></figure>
-    </div>
-    <p class="swipe-hint" data-i="swipe">← posuňte pro další →</p>
+    <p class="lead" data-i="gal_lead">Vyberte zakázku a prohlédněte si ji krok za krokem.</p>
+    <div class="projects" id="projects"></div>
   </div>
 </section>
 
@@ -390,6 +405,18 @@
 
 <a href="https://wa.me/420773475913" class="float-wa" target="_blank" aria-label="WhatsApp">💬</a>
 
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lb-close" id="lbClose" aria-label="Zavřít">✕</button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Předchozí">‹</button>
+  <div class="lb-stage">
+    <img class="lb-img" id="lbImg" alt="">
+    <div class="lb-cap" id="lbCap"></div>
+    <div class="lb-counter" id="lbCount"></div>
+  </div>
+  <button class="lb-nav lb-next" id="lbNext" aria-label="Další">›</button>
+</div>
+
+
 <script>
 /* ---------- i18n ---------- */
 const I = {
@@ -415,7 +442,7 @@ const I = {
     p2_h:"Prohlídka a rozpočet",p2_p:"Přijedeme, zaměříme a připravíme jasnou cenovou nabídku.",
     p3_h:"Realizace",p3_p:"Pustíme se do práce podle harmonogramu a smlouvy.",
     p4_h:"Předání a úklid",p4_p:"Uklidíme, předáme hotové dílo a poskytneme záruku.",
-    gal_eyebrow:"Naše realizace",gal_h2:"Naše realizace",gal_lead:"Ukázky našich prací — rekonstrukce koupelny a interiérová řešení.",
+    gal_eyebrow:"Naše realizace",gal_h2:"Naše realizace",gal_lead:"Vyberte zakázku a prohlédněte si ji krok za krokem.",
     st1:"Koupelna — obklady",st2:"Koupelna — dlažba",st3:"Moderní koupelna",st4:"Umyvadlo a zrcadlo",st5:"Hotová koupelna",st6:"Dřevěné schodiště",swipe:"← posuňte pro další →",
     band_h:"Máte plán? Domluvme se.",band_p:"Nezávazná konzultace a cenová nabídka zdarma.",band_cta:"Získat nabídku",
     con_eyebrow:"Kontakt",con_h2:"Zavolejte nebo napište na WhatsApp",con_lead:"Ozveme se co nejdříve a domluvíme nezávaznou prohlídku zdarma.",con_wa:"💬 Napsat na WhatsApp",con_region:"📍 Praha a celá ČR",con_hours:"🕐 Po–So 7:00–19:00",
@@ -445,7 +472,7 @@ const I = {
     p2_h:"Огляд і кошторис",p2_p:"Приїжджаємо, робимо заміри та готуємо чітку пропозицію.",
     p3_h:"Виконання",p3_p:"Беремось до роботи за графіком і договором.",
     p4_h:"Здача та прибирання",p4_p:"Прибираємо, здаємо готовий об'єкт і даємо гарантію.",
-    gal_eyebrow:"Наші роботи",gal_h2:"Наші роботи",gal_lead:"Приклади наших робіт — ремонт ванної та інтер’єрні рішення.",
+    gal_eyebrow:"Наші роботи",gal_h2:"Наші роботи",gal_lead:"Оберіть замовлення й перегляньте його крок за кроком.",
     st1:"Ванна — плитка",st2:"Ванна — підлога",st3:"Сучасна ванна",st4:"Раковина та дзеркало",st5:"Готова ванна кімната",st6:"Дерев’яні сходи",swipe:"← гортайте вбік →",
     band_h:"Є план? Давайте обговоримо.",band_p:"Безкоштовна консультація та кошторис.",band_cta:"Отримати пропозицію",
     con_eyebrow:"Контакти",con_h2:"Зателефонуйте або напишіть у WhatsApp",con_lead:"Зв'яжемось якнайшвидше та домовимось про безкоштовний огляд.",con_wa:"💬 Написати у WhatsApp",con_region:"📍 Прага та вся Чехія",con_hours:"🕐 Пн–Сб 7:00–19:00",
@@ -462,6 +489,7 @@ function setLang(l){
     if(I[l][k]!==undefined) el.innerHTML=I[l][k];
   });
   document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));
+  try{renderProjects();var _lb=document.getElementById("lightbox");if(_lb&&_lb.classList.contains("open"))updateLB();}catch(e){}
   try{localStorage.setItem('lang',l)}catch(e){}
 }
 document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
@@ -488,6 +516,19 @@ function sendForm(e){
 }
 
 document.getElementById('year').textContent=new Date().getFullYear();
+const PROJECTS=[{"title": {"cs": "Rekonstrukce koupelny", "uk": "Ремонт ванної кімнати"}, "cover": 2, "photos": [{"src": "images/etapa-1.jpg", "cap": {"cs": "Obklady stěn", "uk": "Плитка на стінах"}}, {"src": "images/etapa-2.jpg", "cap": {"cs": "Dlažba", "uk": "Плитка на підлозі"}}, {"src": "images/etapa-3.jpg", "cap": {"cs": "Hotová koupelna", "uk": "Готова ванна"}}]}, {"title": {"cs": "Koupelna", "uk": "Ванна кімната"}, "cover": 1, "photos": [{"src": "images/koupelna2-umyvadlo.jpg", "cap": {"cs": "Umyvadlo a zrcadlo", "uk": "Раковина та дзеркало"}}, {"src": "images/koupelna2-wc.jpg", "cap": {"cs": "WC a topný žebřík", "uk": "Унітаз та рушникосушка"}}]}, {"title": {"cs": "Dřevěné schodiště", "uk": "Дерев’яні сходи"}, "cover": 0, "photos": [{"src": "images/schodiste.jpg", "cap": {"cs": "Dřevěné schodiště", "uk": "Дерев’яні сходи"}}]}];
+const VIEW={cs:"Zobrazit postup",uk:"Дивитись процес"},VIEW1={cs:"Zvětšit foto",uk:"Збільшити"};
+function _lng(){return document.documentElement.lang==="uk"?"uk":"cs";}
+function _t(o){return o[_lng()]||o.cs;}
+let lbP=0,lbI=0;
+function renderProjects(){var w=document.getElementById("projects");if(!w)return;w.innerHTML=PROJECTS.map(function(p,i){var cover=p.photos[p.cover].src,multi=p.photos.length>1;return '<button class="project" type="button" onclick="openLB('+i+')" aria-label="'+_t(p.title)+'">'+'<div class="project-img"><img src="'+cover+'" alt="'+_t(p.title)+'" loading="lazy">'+(multi?'<span class="project-badge">\uD83D\uDCF7 '+p.photos.length+'</span>':'')+'<span class="project-view"><span>'+(multi?_t(VIEW):_t(VIEW1))+'</span></span>'+'</div><div class="project-title">'+_t(p.title)+'</div></button>';}).join("");}
+function updateLB(){var p=PROJECTS[lbP],ph=p.photos[lbI];document.getElementById("lbImg").src=ph.src;document.getElementById("lbCap").textContent=_t(p.title)+" — "+_t(ph.cap);document.getElementById("lbCount").textContent=(lbI+1)+" / "+p.photos.length;var multi=p.photos.length>1;document.getElementById("lbPrev").hidden=!multi;document.getElementById("lbNext").hidden=!multi;document.getElementById("lbCount").hidden=!multi;}
+function openLB(i){lbP=i;lbI=PROJECTS[i].cover;updateLB();var lb=document.getElementById("lightbox");lb.classList.add("open");lb.setAttribute("aria-hidden","false");document.body.style.overflow="hidden";}
+function closeLB(){var lb=document.getElementById("lightbox");lb.classList.remove("open");lb.setAttribute("aria-hidden","true");document.body.style.overflow="";}
+function lbStep(d){var n=PROJECTS[lbP].photos.length;lbI=(lbI+d+n)%n;updateLB();}
+(function(){document.getElementById("lbClose").onclick=closeLB;document.getElementById("lbPrev").onclick=function(e){e.stopPropagation();lbStep(-1);};document.getElementById("lbNext").onclick=function(e){e.stopPropagation();lbStep(1);};document.getElementById("lightbox").addEventListener("click",function(e){if(e.target.id==="lightbox")closeLB();});document.addEventListener("keydown",function(e){var lb=document.getElementById("lightbox");if(!lb.classList.contains("open"))return;if(e.key==="Escape")closeLB();else if(e.key==="ArrowLeft")lbStep(-1);else if(e.key==="ArrowRight")lbStep(1);});var tx=null,lb=document.getElementById("lightbox");lb.addEventListener("touchstart",function(e){tx=e.changedTouches[0].clientX;},{passive:true});lb.addEventListener("touchend",function(e){if(tx===null)return;var dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>40)lbStep(dx<0?1:-1);tx=null;},{passive:true});})();
+renderProjects();
+
 try{const s=localStorage.getItem('lang'); if(s)setLang(s);}catch(e){}
 
 /* count-up статистики при скролі */
