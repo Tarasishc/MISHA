@@ -107,6 +107,9 @@
   .why .card{background:transparent;border:none;padding:0}
   .why .card:hover{transform:none}
   .why .ico{background:rgba(46,155,255,.12)}
+  #why .card{background:transparent;border:none;padding:0}
+  #why .card:hover{transform:none}
+  #why .ico{background:rgba(46,155,255,.12)}
 
   /* PROCESS */
   .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:s}
@@ -328,8 +331,18 @@
   </div>
 </section>
 
+<!-- GALLERY -->
+<section class="section why" id="gallery">
+  <div class="wrap">
+    <div class="eyebrow" data-i="gal_eyebrow">Naše realizace</div>
+    <h2 data-i="gal_h2">Naše realizace</h2>
+    <p class="lead" data-i="gal_lead">Vyberte zakázku a prohlédněte si ji krok za krokem.</p>
+    <div class="projects" id="projects"></div>
+  </div>
+</section>
+
 <!-- WHY -->
-<section class="section why" id="why">
+<section class="section" id="why">
   <div class="wrap">
     <div class="eyebrow" data-i="why_eyebrow">Proč zákazníci volí nás</div>
     <h2 data-i="why_h2">Práce bez stresu a překvapení</h2>
@@ -343,7 +356,7 @@
 </section>
 
 <!-- PROCESS -->
-<section class="section" id="process">
+<section class="section why" id="process">
   <div class="wrap">
     <div class="eyebrow" data-i="proc_eyebrow">Jak to probíhá</div>
     <h2 data-i="proc_h2">Od poptávky k hotové zakázce</h2>
@@ -356,15 +369,6 @@
   </div>
 </section>
 
-<!-- GALLERY -->
-<section class="section why" id="gallery">
-  <div class="wrap">
-    <div class="eyebrow" data-i="gal_eyebrow">Naše realizace</div>
-    <h2 data-i="gal_h2">Naše realizace</h2>
-    <p class="lead" data-i="gal_lead">Vyberte zakázku a prohlédněte si ji krok za krokem.</p>
-    <div class="projects" id="projects"></div>
-  </div>
-</section>
 
 <!-- CTA BAND -->
 <section class="section">
