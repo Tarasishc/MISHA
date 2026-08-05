@@ -132,6 +132,7 @@
   .stage-img.noimg::after{content:"📷 фото";color:var(--muted);font-size:15px;font-weight:700}
   .stage-num{position:absolute;top:12px;left:12px;z-index:2;width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#1a1206;font-weight:900;display:grid;place-items:center;font-size:16px;box-shadow:0 4px 12px rgba(0,0,0,.35)}
   .stage figcaption{text-align:center;font-weight:700;color:var(--text);font-size:16px}
+  .swipe-hint{display:none;text-align:center;color:var(--muted);font-size:13px;margin-top:14px;font-weight:700;letter-spacing:.03em}
 
   /* CTA band */
   .band{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#1a1206;border-radius:22px;padding:46px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
@@ -184,7 +185,9 @@
     .contact-actions .btn{white-space:normal;word-break:break-word;justify-content:center}
     .logo-word{font-size:17px}
     .hero h1{font-size:clamp(30px,8vw,40px)}
-    .stages{grid-template-columns:1fr}
+    .stages{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;padding:2px 0 10px;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+    .stage{flex:0 0 80%;scroll-snap-align:center}
+    .swipe-hint{display:block}
   }
   /* mobile menu open */
   .nav-links.open{display:flex;position:absolute;top:68px;left:0;right:0;flex-direction:column;background:var(--bg-soft);padding:18px 20px;border-bottom:1px solid var(--line);gap:16px}
@@ -366,6 +369,7 @@
         <figcaption data-i="st3">Hotová koupelna</figcaption>
       </figure>
     </div>
+    <p class="swipe-hint" data-i="swipe">← posuňte pro další →</p>
   </div>
 </section>
 
@@ -436,7 +440,7 @@ const I = {
     p3_h:"Realizace",p3_p:"Pustíme se do práce podle harmonogramu a smlouvy.",
     p4_h:"Předání a úklid",p4_p:"Uklidíme, předáme hotové dílo a poskytneme záruku.",
     gal_eyebrow:"Naše realizace",gal_h2:"Rekonstrukce koupelny — krok za krokem",gal_lead:"Ukázka jedné z našich zakázek: od přípravy a izolace až po hotovou koupelnu.",
-    st1:"Příprava a izolace",st2:"Obklady a dlažba",st3:"Hotová koupelna",
+    st1:"Příprava a izolace",st2:"Obklady a dlažba",st3:"Hotová koupelna",swipe:"← posuňte pro další →",
     band_h:"Máte plán? Domluvme se.",band_p:"Nezávazná konzultace a cenová nabídka zdarma.",band_cta:"Získat nabídku",
     con_eyebrow:"Kontakt",con_h2:"Zavolejte nebo napište na WhatsApp",con_lead:"Ozveme se co nejdříve a domluvíme nezávaznou prohlídku zdarma.",con_wa:"💬 Napsat na WhatsApp",con_region:"📍 Praha a celá ČR",con_hours:"🕐 Po–So 7:00–19:00",
     f_name:"Jméno",f_phone:"Telefon",f_msg:"Popis zakázky",f_send:"Odeslat poptávku",
@@ -466,7 +470,7 @@ const I = {
     p3_h:"Виконання",p3_p:"Беремось до роботи за графіком і договором.",
     p4_h:"Здача та прибирання",p4_p:"Прибираємо, здаємо готовий об'єкт і даємо гарантію.",
     gal_eyebrow:"Наші роботи",gal_h2:"Ремонт ванної — крок за кроком",gal_lead:"Приклад одного з наших обʼєктів: від підготовки та гідроізоляції до готової ванної.",
-    st1:"Підготовка та ізоляція",st2:"Облицювання плиткою",st3:"Готова ванна",
+    st1:"Підготовка та ізоляція",st2:"Облицювання плиткою",st3:"Готова ванна",swipe:"← гортайте вбік →",
     band_h:"Є план? Давайте обговоримо.",band_p:"Безкоштовна консультація та кошторис.",band_cta:"Отримати пропозицію",
     con_eyebrow:"Контакти",con_h2:"Зателефонуйте або напишіть у WhatsApp",con_lead:"Зв'яжемось якнайшвидше та домовимось про безкоштовний огляд.",con_wa:"💬 Написати у WhatsApp",con_region:"📍 Прага та вся Чехія",con_hours:"🕐 Пн–Сб 7:00–19:00",
     f_name:"Ім'я",f_phone:"Телефон",f_msg:"Опис роботи",f_send:"Надіслати заявку",
